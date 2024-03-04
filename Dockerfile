@@ -10,7 +10,6 @@ COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 #COPY main.py /app/main.py
-COPY tests /app/tests
 COPY app /app/app
 
 # Expõe a porta 8090
