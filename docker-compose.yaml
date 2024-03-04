@@ -13,11 +13,12 @@ services:
     volumes:
       - db_data:/var/lib/mysql
   customer:
+    container_name: snackhub-customer-app
     build: .
     environment:
       - MYSQL_USER=root
       - MYSQL_PW=123456
-      - IP_APP=snackhub-mysql-db-kitchen
+      - IP_APP=snackhub-mysql-db-customer
       - PORT=3306
     ports:
       - 8090:8090
