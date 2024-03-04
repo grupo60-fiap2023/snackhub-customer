@@ -7,8 +7,8 @@ import app.schemas as schemas
 from pydantic import BaseModel
 
 
-class ClienteIDInput(BaseModel):
-    _id: List[int]
+class ItemModel(BaseModel):
+    id: List[int]
 
 router = APIRouter()
 
@@ -26,8 +26,8 @@ def criar_cliente(cliente: schemas.ClienteSchema, db: Session = Depends(get_db))
 
 # Endpoint para buscar clientes por lista de _id
 @router.get("/cliente/")
-def buscar_clientes_por_id(_id: List[int] = Query(...), db: Session = Depends(get_db)):
-    return db.query(ClienteModel).filter(ClienteModel._id.in_(_id)).all()
+def buscar_clientes_por_id(item: ItemModel, db: Session = Depends(get_db)):
+    return db.query(ClienteModel).filter(ClienteModel._id.in_(item.id)).all()
 
 # Endpoint para atualizar um cadastro
 @router.put("/cliente/{_id}")
