@@ -19,7 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(cliente.router, tags=["Kitchen"], prefix="/kitchen")
+app.include_router(cliente.router, tags=["Customer"], prefix="/customer")
 
 @app.get("/api/healthchecker")
 def root():

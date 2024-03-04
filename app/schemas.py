@@ -1,7 +1,5 @@
 from pydantic import BaseModel
-from datetime import datetime
-from sqlalchemy.sql import func
-
+from typing import List
 
 class ClienteSchema(BaseModel):
     _id: int = 0
@@ -9,4 +7,7 @@ class ClienteSchema(BaseModel):
     nome: str = "None"
     endereco: str = "None"
     telefone: str = "None"
+
+class ClienteRequest(BaseModel):
+    _id : List[int]
     

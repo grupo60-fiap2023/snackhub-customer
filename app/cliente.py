@@ -4,6 +4,11 @@ from app.database import get_db
 from app.models import ClienteModel
 from typing import List
 import app.schemas as schemas
+from pydantic import BaseModel
+
+
+class ClienteIDInput(BaseModel):
+    _id: List[int]
 
 router = APIRouter()
 
@@ -14,13 +19,13 @@ def criar_cliente(cliente: schemas.ClienteSchema, db: Session = Depends(get_db))
         db.add(new_cliente)
         db.commit()
         db.refresh(new_cliente)
-        return {"message": "Pedido criado com sucesso"}
+        return {"message": "Cliente criado com sucesso"}
     except Exception as e:
         db.rollback()
-        raise HTTPException(status_code=400, detail=f"Erro ao registrar pedido: {e}")
+        raise HTTPException(status_code=400, detail=f"Erro ao registrar Cliente: {e}")
 
 # Endpoint para buscar clientes por lista de _id
-@router.get("/clientes/", response_model=List[schemas.ClienteSchema])
+@router.get("/cliente/")
 def buscar_clientes_por_id(_id: List[int] = Query(...), db: Session = Depends(get_db)):
     return db.query(ClienteModel).filter(ClienteModel._id.in_(_id)).all()
 
@@ -30,6 +35,8 @@ def atualizar_cliente(_id: int, cliente: schemas.ClienteSchema, db: Session = De
     cliente_db = db.query(ClienteModel).filter(ClienteModel._id == _id).first()
     if not cliente_db:
         raise HTTPException(status_code=404, detail="Cliente não encontrado")
+    if cliente_db.cpf == "Anonimo":
+        raise HTTPException(status_code=401, detail="Cliente anonimizado")
     for key, value in cliente.dict().items():
         setattr(cliente_db, key, value)
     db.commit()
