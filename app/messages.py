@@ -23,9 +23,9 @@ def processar_mensagens_entrada():
                 db = next(get_db())
                 cliente = db.query(ClienteModel).filter(ClienteModel._id == corpo_mensagem['customerId']).first()
                 
-                if(status == "PAYMENT_ACCEPT"):
+                if(status == "PAYMENT_ACCEPT" or status == "PAYMENT_ACCEPTED"):
                     print(f"{cliente.nome}, o pagamento do pedido '{corpo_mensagem['orderIdentifier']}' foi recebido e a cozinha irá preparar seu pedido.")
-                if(status == "PAYMENT_REJECTED"):
+                if(status == "PAYMENT_REJECTED" or status == "PAYMENT_REJECT" ):
                     print(f"{cliente.nome}, o pagamento do pedido '{corpo_mensagem['orderIdentifier']}' foi rejeitado. Entre em contato com a operadora do seu cartão e tente novamente.")
 
                 sqs.delete_message(
