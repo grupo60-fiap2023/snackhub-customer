@@ -34,6 +34,9 @@ Para que o sistema funcione corretamente, é necessário ter algumas variáveis 
 # Arquitetura SAGA
 ![image](https://github.com/grupo60-fiap2023/snackhub-customer/assets/2027566/ad55d2fe-efe6-4801-8bd7-e9f31cbb9161)
 
+# Arquitetura AWS
+![image](https://github.com/grupo60-fiap2023/snackhub-customer/assets/2027566/f7385581-2434-43eb-bf63-5df92a48df1b)
+
 # RIPD
 
 O arquivo do RIPD estpa no repositório desse projeto.
