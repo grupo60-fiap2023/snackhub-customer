@@ -34,3 +34,6 @@ Para que o sistema funcione corretamente, é necessário ter algumas variáveis 
 # RIPD
 
 O arquivo do RIPD estpa no repositório desse projeto.
+
+# Apresentação do Projeto
+O link para a apresentação de todo o projeto: https://youtu.be/l5SeNVO6qpA
