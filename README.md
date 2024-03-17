@@ -31,6 +31,9 @@ Para que o sistema funcione corretamente, é necessário ter algumas variáveis 
 - IP_APP = IP para acessar o banco de dados
 - PORT = porta para acessar o banco de dados
 
+# Arquitetura SAGA
+![image](https://github.com/grupo60-fiap2023/snackhub-customer/assets/2027566/ad55d2fe-efe6-4801-8bd7-e9f31cbb9161)
+
 # RIPD
 
 O arquivo do RIPD estpa no repositório desse projeto.
